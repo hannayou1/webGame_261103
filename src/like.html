@@ -12,28 +12,19 @@
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 <script type="text/babel">
-    class LikeButton extends React.Component{
-        constructor(props){
-            super(props);
-            this.state = {liked : false};
+
+    const  LikeButton = () =>  {
+        const [liked, setLiked] =React.useState(false); //구조 분해 
+
+        //뭔 짓을 하든, 결국 return 한 게 화면인거에요.
+        if(liked) {
+            return 'you like this'
         }
-        render() {
-            if(this.state.liked) {
-                return 'You liked this.';
-            }
-
-            // return React.createElement('button',{onClick: () => this.setState({liked:true})}, "Like");
-            return (
-                <>
-                    <button onClick={() => this.setState({liked:true})}>
-                        Like
-                    </button>
-
-                </>    
-                );
-        }
-
+        return (
+            <button onClick={() => {setLiked(true);}}>Liked</button>
+        )
     }
+
 </script>
 <script type="text/babel">
     // ReactDOM.render(<LikeButton/>, document.querySelector('#root')); react 17버전 코드
